@@ -85,11 +85,11 @@ namespace Zongsoft.Collections.Commands
 		#endregion
 
 		#region 执行方法
-		protected override void OnExecute(CommandContext context)
+		protected override object OnExecute(CommandContext context)
 		{
 			var queueName = string.Empty;
 
-			if(context.Options.TryGetValue("queue", out queueName))
+			if(context.Expression.Options.TryGetValue("queue", out queueName))
 			{
 				var provider = this.QueueProvider;
 
@@ -101,13 +101,13 @@ namespace Zongsoft.Collections.Commands
 				if(queue == null)
 					throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.NotFoundQueue", queueName));
 
-				context.Result = _queue = queue;
+				_queue = queue;
 			}
 
 			if(_queue == null)
 				throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Queue"));
 
-			context.Result = _queue;
+			return _queue;
 		}
 		#endregion
 	}
