@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<plugin name="Zongsoft.Commands"
+        title="Zongsoft Commands Plugin"
+        author="Popeye Zhong(9555843@qq.com)"
+        version="1.0"
+        copyright="Copyright (C) 2010-2016 Zongsoft Corporation. All rights reserved."
+        description="">
+
+	<extension path="/Workbench/Executor/Commands">
+		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
+		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
+
+		<commandNode name="Sequence" sequence="{srv:~}" type="Zongsoft.Commands.SequenceCommand, Zongsoft.Commands">
+			<object name="Get" type="Zongsoft.Commands.SequenceGetCommand, Zongsoft.Commands" />
+			<object name="Reset" type="Zongsoft.Commands.SequenceResetCommand, Zongsoft.Commands" />
+		</commandNode>
+
+		<commandNode name="Services" type="Zongsoft.Services.Commands.ServicesCommand, Zongsoft.Commands" >
+			<commandNode name="Get" type="Zongsoft.Services.Commands.ServicesGetCommand, Zongsoft.Commands" />
+		</commandNode>
+
+		<commandNode name="Options" type="Zongsoft.Options.Commands.OptionsCommand, Zongsoft.Commands">
+			<object name="Get" type="Zongsoft.Options.Commands.OptionsGetCommand, Zongsoft.Commands" />
+		</commandNode>
+
+		<commandNode name="Net" />
+		<commandNode name="Security" />
+		<commandNode name="Collections" />
+		<commandNode name="Plugins" />
+	</extension>
+
+	<extension path="/Workbench/Executor/Commands/Collections">
+		<commandNode name="Queue" queue="{srv:Queue}" type="Zongsoft.Collections.Commands.QueueCommand, Zongsoft.Commands">
+			<object name="In" type="Zongsoft.Collections.Commands.QueueInCommand, Zongsoft.Commands" />
+			<object name="Out" type="Zongsoft.Collections.Commands.QueueOutCommand, Zongsoft.Commands" />
+			<object name="Peek" type="Zongsoft.Collections.Commands.QueuePeekCommand, Zongsoft.Commands" />
+			<object name="Trim" type="Zongsoft.Collections.Commands.QueueTrimCommand, Zongsoft.Commands" />
+			<object name="Clear" type="Zongsoft.Collections.Commands.QueueClearCommand, Zongsoft.Commands" />
+			<object name="Count" type="Zongsoft.Collections.Commands.QueueCountCommand, Zongsoft.Commands" />
+		</commandNode>
+	</extension>
+
+	<extension path="/Workbench/Executor/Commands/Net">
+		<commandNode name="FtpServer"
+		             type="Zongsoft.Communication.Commands.TcpServerCommand, Zongsoft.Commands"
+		             listener="{srv:FtpServer, Communication}" />
+
+		<commandNode name="TcpServer"
+		             type="Zongsoft.Communication.Commands.TcpServerCommand, Zongsoft.Commands"
+		             listener="{srv:TcpServer, Communication}" />
+
+		<commandNode name="TcpClient"
+		             type="Zongsoft.Communication.Commands.TcpClientCommand, Zongsoft.Commands"
+		             client="{srv:TcpClient, Communication}" />
+	</extension>
+
+	<extension path="/Workbench/Executor/Commands/Net/FtpServer">
+		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
+		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
+		<object name="Status" type="Zongsoft.Communication.Commands.TcpServerStatusCommand, Zongsoft.Commands" />
+	</extension>
+
+	<extension path="/Workbench/Executor/Commands/Net/TcpServer">
+		<object name="Send" type="Zongsoft.Communication.Commands.SendCommand, Zongsoft.Commands" />
+		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
+		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
+		<object name="Status" type="Zongsoft.Communication.Commands.TcpServerStatusCommand, Zongsoft.Commands" />
+	</extension>
+
+	<extension path="/Workbench/Executor/Commands/Net/TcpClient">
+		<object name="Send" type="Zongsoft.Communication.Commands.SendCommand, Zongsoft.Commands" />
+		<object name="Connect" type="Zongsoft.Communication.Commands.TcpClientConnectCommand, Zongsoft.Commands" />
+		<object name="Disconnect" type="Zongsoft.Communication.Commands.TcpClientDisconnectCommand, Zongsoft.Commands" />
+		<object name="Status" type="Zongsoft.Communication.Commands.TcpClientStatusCommand, Zongsoft.Commands" />
+	</extension>
+</plugin>

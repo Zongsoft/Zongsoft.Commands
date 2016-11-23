@@ -107,6 +107,9 @@ namespace Zongsoft.Collections.Commands
 			if(_queue == null)
 				throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Queue"));
 
+			//打印队列信息
+			context.Output.WriteLine(ResourceUtility.GetString("Text.QueueCommand.Message", _queue.Name, _queue.Count, _queue.GetType().FullName, _queue.ToString()));
+
 			return _queue;
 		}
 		#endregion
