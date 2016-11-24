@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Text.AnExceptionOccurredOnRun" xml:space="preserve">
+    <value>在运行过程中发生了一个异常：</value>
+  </data>
   <data name="Text.CannotObtainCommand" xml:space="preserve">
     <value>无法获取 {0} 命令。</value>
   </data>
@@ -129,6 +132,115 @@
   <data name="Text.Command.MissingArguments" xml:space="preserve">
     <value>没有指定命令参数，请至少指定一个命令参数。</value>
   </data>
+  <data name="Text.Command.Options.Encoding" xml:space="preserve">
+    <value>字符编码类型。</value>
+  </data>
+  <data name="Text.CommandExecuteFailed" xml:space="preserve">
+    <value>命令执行失败。</value>
+  </data>
+  <data name="Text.CommandExecuteSucceed" xml:space="preserve">
+    <value>命令执行成功。</value>
+  </data>
+  <data name="Text.Communication.Client.Options.Address" xml:space="preserve">
+    <value>远程服务器的网络端点。</value>
+  </data>
+  <data name="Text.Communication.ClientCommand.Description" xml:space="preserve">
+    <value>提供网络客户端各种操作的宿主命令。</value>
+  </data>
+  <data name="Text.Communication.ClientCommand.Title" xml:space="preserve">
+    <value>网络客户端命令</value>
+  </data>
+  <data name="Text.Communication.ClientStatusCommand.Description" xml:space="preserve">
+    <value>查看当前网络客户端的运行参数及状态信息。</value>
+  </data>
+  <data name="Text.Communication.ClientStatusCommand.Title" xml:space="preserve">
+    <value>网络客户端状态命令</value>
+  </data>
+  <data name="Text.Communication.SendCommand.Channel" xml:space="preserve">
+    <value>#{0}通道，{1}</value>
+  </data>
+  <data name="Text.Communication.SendCommand.Description" xml:space="preserve">
+    <value>1、以异步的方式进行网络发送，可通过type选项来指定发送的数据类型。如果发送的是文本则可以通过encoding选项来指定文本的编码方式。
+2、选项encoding的值为编码方式名称，譬如：ascii,utf7,utf8,utf-8,utf32,unicode,bigend,bigendian,gb2312...</value>
+  </data>
+  <data name="Text.Communication.SendCommand.Options.Type" xml:space="preserve">
+    <value>发送数据的类型，可以为文件(文件夹)或者字符串。</value>
+  </data>
+  <data name="Text.Communication.SendCommand.PrepareSendFiles" xml:space="preserve">
+    <value>发送“{0}”目录中的{1}个文件：</value>
+  </data>
+  <data name="Text.Communication.SendCommand.SendCompleted" xml:space="preserve">
+    <value>总计发送{0}项数据，其中失败{1}项。</value>
+  </data>
+  <data name="Text.Communication.SendCommand.SendFailed" xml:space="preserve">
+    <value>{0} 发送失败。</value>
+  </data>
+  <data name="Text.Communication.SendCommand.SendSucceed" xml:space="preserve">
+    <value>{0} 发送成功。</value>
+  </data>
+  <data name="Text.Communication.SendCommand.Title" xml:space="preserve">
+    <value>发送命令</value>
+  </data>
+  <data name="Text.Communication.ServerCommand.Description" xml:space="preserve">
+    <value>提供网络服务器各种操作的宿主命令。</value>
+  </data>
+  <data name="Text.Communication.ServerCommand.Options.Channel" xml:space="preserve">
+    <value>当前操作的通道编号，指定的通道必须存在并且是活动的。</value>
+  </data>
+  <data name="Text.Communication.ServerCommand.Title" xml:space="preserve">
+    <value>网络服务器命令</value>
+  </data>
+  <data name="Text.Communication.ServerStartCommand.Description" xml:space="preserve">
+    <value>启动当前服务器。</value>
+  </data>
+  <data name="Text.Communication.ServerStartCommand.Title" xml:space="preserve">
+    <value>服务器启动命令</value>
+  </data>
+  <data name="Text.Communication.ServerStatusCommand.Description" xml:space="preserve">
+    <value>查看当前服务器的运行参数及状态信息。</value>
+  </data>
+  <data name="Text.Communication.ServerStatusCommand.Title" xml:space="preserve">
+    <value>服务器状态命令</value>
+  </data>
+  <data name="Text.Communication.ServerStopCommand.Description" xml:space="preserve">
+    <value>停止当前服务器。</value>
+  </data>
+  <data name="Text.Communication.ServerStopCommand.Title" xml:space="preserve">
+    <value>服务器停止命令</value>
+  </data>
+  <data name="Text.ContentType.File" xml:space="preserve">
+    <value>文件。</value>
+  </data>
+  <data name="Text.ContentType.Text" xml:space="preserve">
+    <value>文本字符。</value>
+  </data>
+  <data name="Text.FileOrDirectoryNotExists" xml:space="preserve">
+    <value>{0}文件或目录是不存在的。</value>
+  </data>
+  <data name="Text.IsConnected" xml:space="preserve">
+    <value>是否已经连接</value>
+  </data>
+  <data name="Text.LastConnectTime" xml:space="preserve">
+    <value>最后连接时间</value>
+  </data>
+  <data name="Text.LastReceivedTime" xml:space="preserve">
+    <value>最后接收时间</value>
+  </data>
+  <data name="Text.LastSendTime" xml:space="preserve">
+    <value>最后发送时间</value>
+  </data>
+  <data name="Text.LocalEndPoint" xml:space="preserve">
+    <value>本地网络端点</value>
+  </data>
+  <data name="Text.No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Text.OptionsGetCommand.Description" xml:space="preserve">
+    <value>该命令提供获取当前选项提供程序中的选项配置。</value>
+  </data>
+  <data name="Text.OptionsGetCommand.DisplayName" xml:space="preserve">
+    <value>获取选项命令</value>
+  </data>
   <data name="Text.QueueCommand.Message" xml:space="preserve">
     <value>当前名为 '{0}' 队列，总计 {1} 个元素，其类型是：{2}
 队列信息：{3}</value>
@@ -139,6 +251,9 @@
   <data name="Text.QueueCommand.NotFoundQueue" xml:space="preserve">
     <value>从队列提供程序中没有找到指定名称为”{0}“的队列。</value>
   </data>
+  <data name="Text.QueueCommand.Options.Count" xml:space="preserve">
+    <value>出队或者提取的项目个数。</value>
+  </data>
   <data name="Text.QueueCommand.Options.Name" xml:space="preserve">
     <value>指定的消息队列名称。</value>
   </data>
@@ -148,10 +263,67 @@
   <data name="Text.QueueCommand.Options.Round" xml:space="preserve">
     <value>出队或入队操作循环执行的次数，默认值为1。如果在出队命令中该参数为负数则表示直至将队列出空为止。</value>
   </data>
+  <data name="Text.QueueCountCommand.Message" xml:space="preserve">
+    <value>名为 '{0}' 队列，总计 {1} 个元素。</value>
+  </data>
   <data name="Text.QueueInCommand.Message" xml:space="preserve">
     <value>第 {0} 轮，入队 {1} 条记录，{2} 队列。</value>
   </data>
+  <data name="Text.QueueIsEmpty" xml:space="preserve">
+    <value>名为'{0}'的队列已经空。</value>
+  </data>
+  <data name="Text.QueueOutCommand.Message" xml:space="preserve">
+    <value>第 {0} 轮，出队 {1} 条记录，{2} 队列。</value>
+  </data>
+  <data name="Text.RemoteEndPoint" xml:space="preserve">
+    <value>远程网络端点</value>
+  </data>
   <data name="Text.SequenceCommand.MissingArguments" xml:space="preserve">
     <value>缺少命令参数，请至少指定一个要操作的序列器名称。</value>
+  </data>
+  <data name="Text.ServerHasBeenStarted" xml:space="preserve">
+    <value>服务器已经启动。</value>
+  </data>
+  <data name="Text.ServicesCommand.Description" xml:space="preserve">
+    <value>该命令提供切换指定服务供应程序工厂中的当前操作的供应程序，并显示所有服务提供程序的名称。
+如果不指定命令行的参数则显示所有命令提供程序的名称；否则将命令行参数所指定名称的服务提供程序(默认服务提供程序名为“.”)设置本命令操作的服务容器。</value>
+  </data>
+  <data name="Text.ServicesCommand.DisplayName" xml:space="preserve">
+    <value>服务命令</value>
+  </data>
+  <data name="Text.ServicesCommand.NotFoundProvider" xml:space="preserve">
+    <value>指定名称为“{0}”的服务提供程序没有找到。</value>
+  </data>
+  <data name="Text.ServicesCommand.Options.Provider" xml:space="preserve">
+    <value>指定的服务提供程序的名称。</value>
+  </data>
+  <data name="Text.ServicesGetCommand.Description" xml:space="preserve">
+    <value>该命令提供获取当前服务供应程序中的各种服务对象，并显式其信息。
+
+用法如下：
+
+[services.]get &amp;lt;service-name&amp;gt;
+	参数为要获取的服务名称，该名称为其在当前服务供应程序注册时声明的名称。
+
+[services.]get -contract:assemblyQualifiedName
+	-contract 选项为要获取的服务类型限定名。
+
+[services.]get -contract:assemblyQualifiedName parameter
+	-contract 选项为要获取的服务类型限定名；参数为解析时传入的参数。</value>
+  </data>
+  <data name="Text.ServicesGetCommand.DisplayName" xml:space="preserve">
+    <value>获取服务命令</value>
+  </data>
+  <data name="Text.TcpClientConnectCommand.Options.Async" xml:space="preserve">
+    <value>指示是否以异步方式连接。</value>
+  </data>
+  <data name="Text.ThisFile" xml:space="preserve">
+    <value>“{0}”文件，大小：{1}</value>
+  </data>
+  <data name="Text.ThisText" xml:space="preserve">
+    <value>“{0}”文本</value>
+  </data>
+  <data name="Text.Yes" xml:space="preserve">
+    <value>是</value>
   </data>
 </root>

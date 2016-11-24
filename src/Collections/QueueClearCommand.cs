@@ -25,61 +25,40 @@
  */
 
 using System;
-using System.Collections.Generic;
 
 using Zongsoft.Services;
 using Zongsoft.Resources;
 
 namespace Zongsoft.Collections.Commands
 {
-	internal static class QueueCommandHelper
+	[CommandOption("queues", Type = typeof(string), Description = "${Text.QueueCommand.Options.Queues}")]
+	public class QueueClearCommand : CommandBase<CommandContext>
 	{
-		public static ICollection<IQueue> GetQueues(CommandTreeNode node, string names)
+		#region 构造函数
+		public QueueClearCommand() : this("Clear")
 		{
-			var result = new List<IQueue>();
-			IQueue queue;
-
-			if(string.IsNullOrWhiteSpace(names))
-			{
-				queue = FindQueue(node);
-
-				if(queue == null)
-					throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Queue"));
-
-				result.Add(queue);
-			}
-			else
-			{
-				foreach(var name in names.Split(',', ';'))
-				{
-					if(!string.IsNullOrWhiteSpace(name))
-					{
-						queue = FindQueue(node, name);
-
-						if(queue == null)
-							throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", $"Queue[{name}]"));
-
-						result.Add(queue);
-					}
-				}
-			}
-
-			return result;
 		}
 
-		private static IQueue FindQueue(CommandTreeNode node, string name = null)
+		public QueueClearCommand(string name) : base(name)
 		{
-			if(node == null)
-				return null;
+		}
+		#endregion
 
-			var queueCommand = node.Command as QueueCommand;
+		#region 执行方法
+		protected override object OnExecute(CommandContext context)
+		{
+			var queues = QueueCommandHelper.GetQueues(context.CommandNode, context.Expression.Options.GetValue<string>("queues"));
 
-			if(queueCommand != null)
+			foreach(var queue in queues)
 			{
-				return name == null ? queueCommand.Queue : queueCommand.QueueProvider.GetQueue(name);
+				queue.Clear();
 			}
 
-			return FindQueue(node.Parent, name);
+			//显示执行成功的信息
+			context.Output.WriteLine(ResourceUtility.GetString("Text.CommandExecuteSucceed"));
+
+			return null;
 		}
+		#endregion
 	}
 }

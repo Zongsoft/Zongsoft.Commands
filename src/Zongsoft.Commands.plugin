@@ -24,9 +24,7 @@
 		</commandNode>
 
 		<commandNode name="Net" />
-		<commandNode name="Security" />
 		<commandNode name="Collections" />
-		<commandNode name="Plugins" />
 	</extension>
 
 	<extension path="/Workbench/Executor/Commands/Collections">
@@ -34,7 +32,6 @@
 			<object name="In" type="Zongsoft.Collections.Commands.QueueInCommand, Zongsoft.Commands" />
 			<object name="Out" type="Zongsoft.Collections.Commands.QueueOutCommand, Zongsoft.Commands" />
 			<object name="Peek" type="Zongsoft.Collections.Commands.QueuePeekCommand, Zongsoft.Commands" />
-			<object name="Trim" type="Zongsoft.Collections.Commands.QueueTrimCommand, Zongsoft.Commands" />
 			<object name="Clear" type="Zongsoft.Collections.Commands.QueueClearCommand, Zongsoft.Commands" />
 			<object name="Count" type="Zongsoft.Collections.Commands.QueueCountCommand, Zongsoft.Commands" />
 		</commandNode>
@@ -42,11 +39,11 @@
 
 	<extension path="/Workbench/Executor/Commands/Net">
 		<commandNode name="FtpServer"
-		             type="Zongsoft.Communication.Commands.TcpServerCommand, Zongsoft.Commands"
+		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
 		             listener="{srv:FtpServer, Communication}" />
 
 		<commandNode name="TcpServer"
-		             type="Zongsoft.Communication.Commands.TcpServerCommand, Zongsoft.Commands"
+		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
 		             listener="{srv:TcpServer, Communication}" />
 
 		<commandNode name="TcpClient"

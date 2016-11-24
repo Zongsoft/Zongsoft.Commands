@@ -25,61 +25,38 @@
  */
 
 using System;
-using System.Collections.Generic;
 
 using Zongsoft.Services;
 using Zongsoft.Resources;
 
-namespace Zongsoft.Collections.Commands
+namespace Zongsoft.Communication.Commands
 {
-	internal static class QueueCommandHelper
+	public class TcpClientDisconnectCommand : CommandBase<CommandContext>
 	{
-		public static ICollection<IQueue> GetQueues(CommandTreeNode node, string names)
+		#region 构造函数
+		public TcpClientDisconnectCommand() : base("Disconnect")
 		{
-			var result = new List<IQueue>();
-			IQueue queue;
-
-			if(string.IsNullOrWhiteSpace(names))
-			{
-				queue = FindQueue(node);
-
-				if(queue == null)
-					throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Queue"));
-
-				result.Add(queue);
-			}
-			else
-			{
-				foreach(var name in names.Split(',', ';'))
-				{
-					if(!string.IsNullOrWhiteSpace(name))
-					{
-						queue = FindQueue(node, name);
-
-						if(queue == null)
-							throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", $"Queue[{name}]"));
-
-						result.Add(queue);
-					}
-				}
-			}
-
-			return result;
 		}
 
-		private static IQueue FindQueue(CommandTreeNode node, string name = null)
+		public TcpClientDisconnectCommand(string name) : base(name)
 		{
-			if(node == null)
-				return null;
-
-			var queueCommand = node.Command as QueueCommand;
-
-			if(queueCommand != null)
-			{
-				return name == null ? queueCommand.Queue : queueCommand.QueueProvider.GetQueue(name);
-			}
-
-			return FindQueue(node.Parent, name);
 		}
+		#endregion
+
+		#region 重写方法
+		protected override object OnExecute(CommandContext context)
+		{
+			var client = TcpClientCommand.GetClient(context.CommandNode);
+
+			if(client == null)
+				throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Client"));
+
+			client.Disconnect();
+
+			context.Output.WriteLine(ResourceUtility.GetString("Text.CommandExecuteSucceed"));
+
+			return null;
+		}
+		#endregion
 	}
 }

@@ -28,58 +28,58 @@ using System;
 using System.Collections.Generic;
 
 using Zongsoft.Services;
-using Zongsoft.Resources;
 
-namespace Zongsoft.Collections.Commands
+namespace Zongsoft.Communication.Commands
 {
-	internal static class QueueCommandHelper
+	public abstract class ServerCommandBase : CommandBase<CommandContext>
 	{
-		public static ICollection<IQueue> GetQueues(CommandTreeNode node, string names)
+		#region 成员字段
+		private IListener _server;
+		#endregion
+
+		#region 构造函数
+		protected ServerCommandBase(string name) : base(name)
 		{
-			var result = new List<IQueue>();
-			IQueue queue;
-
-			if(string.IsNullOrWhiteSpace(names))
-			{
-				queue = FindQueue(node);
-
-				if(queue == null)
-					throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", "Queue"));
-
-				result.Add(queue);
-			}
-			else
-			{
-				foreach(var name in names.Split(',', ';'))
-				{
-					if(!string.IsNullOrWhiteSpace(name))
-					{
-						queue = FindQueue(node, name);
-
-						if(queue == null)
-							throw new CommandException(ResourceUtility.GetString("Text.CannotObtainCommandTarget", $"Queue[{name}]"));
-
-						result.Add(queue);
-					}
-				}
-			}
-
-			return result;
 		}
+		#endregion
 
-		private static IQueue FindQueue(CommandTreeNode node, string name = null)
+		#region 公共属性
+		public IListener Server
+		{
+			get
+			{
+				return _server;
+			}
+			set
+			{
+				if(value == null)
+					throw new ArgumentNullException();
+
+				_server = value;
+			}
+		}
+		#endregion
+
+		#region 重写方法
+		protected override bool CanExecute(object parameter)
+		{
+			return _server != null && base.CanExecute(parameter);
+		}
+		#endregion
+
+		#region 静态方法
+		internal static IListener GetServer(CommandTreeNode node)
 		{
 			if(node == null)
 				return null;
 
-			var queueCommand = node.Command as QueueCommand;
+			var command = node.Command as ServerCommandBase;
 
-			if(queueCommand != null)
-			{
-				return name == null ? queueCommand.Queue : queueCommand.QueueProvider.GetQueue(name);
-			}
+			if(command != null)
+				return command.Server;
 
-			return FindQueue(node.Parent, name);
+			return GetServer(node.Parent);
 		}
+		#endregion
 	}
 }
