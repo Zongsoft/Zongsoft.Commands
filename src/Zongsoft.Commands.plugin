@@ -2,9 +2,15 @@
 <plugin name="Zongsoft.Commands"
         title="Zongsoft Commands Plugin"
         author="Popeye Zhong(9555843@qq.com)"
-        version="1.0"
+        version="4.4.0.1611"
         copyright="Copyright (C) 2010-2016 Zongsoft Corporation. All rights reserved."
-        description="">
+        description="Created Date: 2012-06-09 by Popeye Zhong">
+
+	<manifest>
+		<assemblies>
+			<assembly name="Zongsoft.Commands" />
+		</assemblies>
+	</manifest>
 
 	<extension path="/Workbench/Executor/Commands">
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />

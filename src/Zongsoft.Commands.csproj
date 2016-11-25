@@ -35,7 +35,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
     <Reference Include="Zongsoft.CoreLibrary">
-      <HintPath>..\..\Zongsoft.CoreLibrary\src\bin\Debug\Zongsoft.CoreLibrary.dll</HintPath>
+      <HintPath>..\..\Zongsoft.CoreLibrary\src\bin\$(Configuration)\Zongsoft.CoreLibrary.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
