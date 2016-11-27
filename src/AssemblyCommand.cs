@@ -34,9 +34,9 @@ using Zongsoft.Services;
 
 namespace Zongsoft.Commands
 {
-	[DisplayName("${AssemblyCommand.Title}")]
-	[Description("${AssemblyCommand.Description}")]
-	[CommandOption("sort", Type = typeof(SortMode), DefaultValue=SortMode.None, Description = "${Command.Options.Sort}")]
+	[DisplayName("${Text.AssemblyCommand.Name}")]
+	[Description("${Text.AssemblyCommand.Description}")]
+	[CommandOption("sort", Type = typeof(SortMode), DefaultValue=SortMode.None, Description = "${Text.SortMode}")]
 	public class AssemblyCommand : Zongsoft.Services.CommandBase<CommandContext>
 	{
 		#region 成员变量

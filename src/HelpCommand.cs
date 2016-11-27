@@ -34,7 +34,7 @@ using Zongsoft.Resources;
 
 namespace Zongsoft.Commands
 {
-	[DisplayName("${Text.HelpCommand.Title}")]
+	[DisplayName("${Text.HelpCommand.Name}")]
 	[Description("${Text.HelpCommand.Description}")]
 	public class HelpCommand : CommandBase<CommandContext>
 	{
@@ -73,7 +73,7 @@ namespace Zongsoft.Commands
 
 				if(node == null)
 				{
-					context.Output.WriteLine(CommandOutletColor.Red, ResourceUtility.GetString("CommandNotFound", argument));
+					context.Output.WriteLine(CommandOutletColor.Red, ResourceUtility.GetString("Text.Message.CommandNotFound", argument));
 					continue;
 				}
 
@@ -100,10 +100,10 @@ namespace Zongsoft.Commands
 			output.Write(CommandOutletColor.Blue, command.Name + " ");
 
 			if(!command.Enabled)
-				output.Write(CommandOutletColor.DarkGray, "({0})", ResourceUtility.GetString("${Disabled}"));
+				output.Write(CommandOutletColor.DarkGray, "({0})", ResourceUtility.GetString("${Text.Disabled}"));
 
 			if(displayName == null || string.IsNullOrWhiteSpace(displayName.DisplayName))
-				output.Write(ResourceUtility.GetString("${Command}"));
+				output.Write(ResourceUtility.GetString("${Text.Command}"));
 			else
 				output.Write(ResourceUtility.GetString(displayName.DisplayName, command.GetType().Assembly));
 
@@ -111,7 +111,7 @@ namespace Zongsoft.Commands
 
 			if(optionAttributes != null && optionAttributes.Length > 0)
 			{
-				output.WriteLine("," + ResourceUtility.GetString("${CommandUsages}"), optionAttributes.Length);
+				output.WriteLine("," + ResourceUtility.GetString("${Text.CommandUsages}"), optionAttributes.Length);
 				output.WriteLine();
 
 				string commandName = command.Name;
@@ -155,9 +155,9 @@ namespace Zongsoft.Commands
 					output.Write(" (".PadLeft(optionPadding));
 
 					if(optionAttribute.Required)
-						output.Write(CommandOutletColor.DarkRed, ResourceUtility.GetString("${Required}"));
+						output.Write(CommandOutletColor.DarkRed, ResourceUtility.GetString("${Text.Required}"));
 					else
-						output.Write(CommandOutletColor.DarkGreen, ResourceUtility.GetString("${Optional}"));
+						output.Write(CommandOutletColor.DarkGreen, ResourceUtility.GetString("${Text.Optional}"));
 
 					output.Write(") ");
 

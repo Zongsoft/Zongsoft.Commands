@@ -120,11 +120,20 @@
   <data name="Text.AnExceptionOccurredOnRun" xml:space="preserve">
     <value>在运行过程中发生了一个异常：</value>
   </data>
+  <data name="Text.AssemblyCommand.Description" xml:space="preserve">
+    <value>查看当前应用程序(进程)所有加载的程序集信息。</value>
+  </data>
+  <data name="Text.AssemblyCommand.Name" xml:space="preserve">
+    <value>程序集查看命令</value>
+  </data>
   <data name="Text.CannotObtainCommand" xml:space="preserve">
     <value>无法获取 {0} 命令。</value>
   </data>
   <data name="Text.CannotObtainCommandTarget" xml:space="preserve">
     <value>无法获得命令的操作目标：{0}。</value>
+  </data>
+  <data name="Text.Command" xml:space="preserve">
+    <value>命令</value>
   </data>
   <data name="Text.Command.InvalidParameter" xml:space="preserve">
     <value>无效的命令输入参数。</value>
@@ -140,6 +149,9 @@
   </data>
   <data name="Text.CommandExecuteSucceed" xml:space="preserve">
     <value>命令执行成功。</value>
+  </data>
+  <data name="Text.CommandUsages" xml:space="preserve">
+    <value>命令使用方法：</value>
   </data>
   <data name="Text.Communication.Client.Options.Address" xml:space="preserve">
     <value>远程服务器的网络端点。</value>
@@ -214,8 +226,17 @@
   <data name="Text.ContentType.Text" xml:space="preserve">
     <value>文本字符。</value>
   </data>
+  <data name="Text.Disabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
   <data name="Text.FileOrDirectoryNotExists" xml:space="preserve">
     <value>{0}文件或目录是不存在的。</value>
+  </data>
+  <data name="Text.HelpCommand.Description" xml:space="preserve">
+    <value>提供对命令的相关使用信息的命令。</value>
+  </data>
+  <data name="Text.HelpCommand.Name" xml:space="preserve">
+    <value>帮助命令</value>
   </data>
   <data name="Text.IsConnected" xml:space="preserve">
     <value>是否已经连接</value>
@@ -232,8 +253,14 @@
   <data name="Text.LocalEndPoint" xml:space="preserve">
     <value>本地网络端点</value>
   </data>
+  <data name="Text.Message.CommandNotFound" xml:space="preserve">
+    <value>没有找到指定‘{0}’的命令。</value>
+  </data>
   <data name="Text.No" xml:space="preserve">
     <value>否</value>
+  </data>
+  <data name="Text.Optional" xml:space="preserve">
+    <value>可选的</value>
   </data>
   <data name="Text.OptionsGetCommand.Description" xml:space="preserve">
     <value>该命令提供获取当前选项提供程序中的选项配置。</value>
@@ -278,6 +305,9 @@
   <data name="Text.RemoteEndPoint" xml:space="preserve">
     <value>远程网络端点</value>
   </data>
+  <data name="Text.Required" xml:space="preserve">
+    <value>必须的</value>
+  </data>
   <data name="Text.SequenceCommand.MissingArguments" xml:space="preserve">
     <value>缺少命令参数，请至少指定一个要操作的序列器名称。</value>
   </data>
@@ -313,6 +343,18 @@
   </data>
   <data name="Text.ServicesGetCommand.DisplayName" xml:space="preserve">
     <value>获取服务命令</value>
+  </data>
+  <data name="Text.SortMode" xml:space="preserve">
+    <value>排序方式</value>
+  </data>
+  <data name="Text.SortMode.Asc" xml:space="preserve">
+    <value>升序</value>
+  </data>
+  <data name="Text.SortMode.Desc" xml:space="preserve">
+    <value>降序</value>
+  </data>
+  <data name="Text.SortMode.None" xml:space="preserve">
+    <value>不排序</value>
   </data>
   <data name="Text.TcpClientConnectCommand.Options.Async" xml:space="preserve">
     <value>指示是否以异步方式连接。</value>

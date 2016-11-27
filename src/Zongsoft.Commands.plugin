@@ -46,11 +46,11 @@
 	<extension path="/Workbench/Executor/Commands/Net">
 		<commandNode name="FtpServer"
 		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
-		             listener="{srv:FtpServer, Communication}" />
+		             server="{srv:FtpServer, Communication}" />
 
 		<commandNode name="TcpServer"
 		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
-		             listener="{srv:TcpServer, Communication}" />
+		             server="{srv:TcpServer, Communication}" />
 
 		<commandNode name="TcpClient"
 		             type="Zongsoft.Communication.Commands.TcpClientCommand, Zongsoft.Commands"
@@ -60,14 +60,14 @@
 	<extension path="/Workbench/Executor/Commands/Net/FtpServer">
 		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
 		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
-		<object name="Status" type="Zongsoft.Communication.Commands.TcpServerStatusCommand, Zongsoft.Commands" />
+		<object name="Status" type="Zongsoft.Communication.Commands.ServerStatusCommand, Zongsoft.Commands" />
 	</extension>
 
 	<extension path="/Workbench/Executor/Commands/Net/TcpServer">
 		<object name="Send" type="Zongsoft.Communication.Commands.SendCommand, Zongsoft.Commands" />
 		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
 		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
-		<object name="Status" type="Zongsoft.Communication.Commands.TcpServerStatusCommand, Zongsoft.Commands" />
+		<object name="Status" type="Zongsoft.Communication.Commands.ServerStatusCommand, Zongsoft.Commands" />
 	</extension>
 
 	<extension path="/Workbench/Executor/Commands/Net/TcpClient">
