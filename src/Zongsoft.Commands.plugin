@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?> 
 <plugin name="Zongsoft.Commands"
         title="Zongsoft Commands Plugin"
         author="Popeye Zhong(9555843@qq.com)"
@@ -29,7 +29,6 @@
 			<object name="Get" type="Zongsoft.Options.Commands.OptionsGetCommand, Zongsoft.Commands" />
 		</commandNode>
 
-		<commandNode name="Net" />
 		<commandNode name="Collections" />
 	</extension>
 
@@ -43,37 +42,4 @@
 		</commandNode>
 	</extension>
 
-	<extension path="/Workbench/Executor/Commands/Net">
-		<commandNode name="FtpServer"
-		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
-		             server="{srv:FtpServer, Communication}" />
-
-		<commandNode name="TcpServer"
-		             type="Zongsoft.Communication.Commands.ServerCommand, Zongsoft.Commands"
-		             server="{srv:TcpServer, Communication}" />
-
-		<commandNode name="TcpClient"
-		             type="Zongsoft.Communication.Commands.TcpClientCommand, Zongsoft.Commands"
-		             client="{srv:TcpClient, Communication}" />
-	</extension>
-
-	<extension path="/Workbench/Executor/Commands/Net/FtpServer">
-		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
-		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
-		<object name="Status" type="Zongsoft.Communication.Commands.ServerStatusCommand, Zongsoft.Commands" />
-	</extension>
-
-	<extension path="/Workbench/Executor/Commands/Net/TcpServer">
-		<object name="Send" type="Zongsoft.Communication.Commands.SendCommand, Zongsoft.Commands" />
-		<object name="Stop" type="Zongsoft.Communication.Commands.ServerStopCommand, Zongsoft.Commands" />
-		<object name="Start" type="Zongsoft.Communication.Commands.ServerStartCommand, Zongsoft.Commands" />
-		<object name="Status" type="Zongsoft.Communication.Commands.ServerStatusCommand, Zongsoft.Commands" />
-	</extension>
-
-	<extension path="/Workbench/Executor/Commands/Net/TcpClient">
-		<object name="Send" type="Zongsoft.Communication.Commands.SendCommand, Zongsoft.Commands" />
-		<object name="Connect" type="Zongsoft.Communication.Commands.TcpClientConnectCommand, Zongsoft.Commands" />
-		<object name="Disconnect" type="Zongsoft.Communication.Commands.TcpClientDisconnectCommand, Zongsoft.Commands" />
-		<object name="Status" type="Zongsoft.Communication.Commands.TcpClientStatusCommand, Zongsoft.Commands" />
-	</extension>
 </plugin>

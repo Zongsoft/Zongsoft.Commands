@@ -47,17 +47,6 @@
     <Compile Include="Collections\QueueCommandHelper.cs" />
     <Compile Include="Collections\QueueInCommand.cs" />
     <Compile Include="Collections\QueueOutCommand.cs" />
-    <Compile Include="Communication\ISenderHost.cs" />
-    <Compile Include="Communication\SendCommand.cs" />
-    <Compile Include="Communication\ServerCommandBase.cs" />
-    <Compile Include="Communication\ServerStartCommand.cs" />
-    <Compile Include="Communication\ServerStatusCommand.cs" />
-    <Compile Include="Communication\ServerStopCommand.cs" />
-    <Compile Include="Communication\ServerCommand.cs" />
-    <Compile Include="Communication\TcpClientCommand.cs" />
-    <Compile Include="Communication\TcpClientConnectCommand.cs" />
-    <Compile Include="Communication\TcpClientDisconnectCommand.cs" />
-    <Compile Include="Communication\TcpClientStatusCommand.cs" />
     <Compile Include="HelpCommand.cs" />
     <Compile Include="Options\OptionsCommand.cs" />
     <Compile Include="Options\OptionsGetCommand.cs" />

@@ -117,6 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+
   <data name="Text.AnExceptionOccurredOnRun" xml:space="preserve">
     <value>在运行过程中发生了一个异常：</value>
   </data>
@@ -153,73 +154,7 @@
   <data name="Text.CommandUsages" xml:space="preserve">
     <value>命令使用方法：</value>
   </data>
-  <data name="Text.Communication.Client.Options.Address" xml:space="preserve">
-    <value>远程服务器的网络端点。</value>
-  </data>
-  <data name="Text.Communication.ClientCommand.Description" xml:space="preserve">
-    <value>提供网络客户端各种操作的宿主命令。</value>
-  </data>
-  <data name="Text.Communication.ClientCommand.Title" xml:space="preserve">
-    <value>网络客户端命令</value>
-  </data>
-  <data name="Text.Communication.ClientStatusCommand.Description" xml:space="preserve">
-    <value>查看当前网络客户端的运行参数及状态信息。</value>
-  </data>
-  <data name="Text.Communication.ClientStatusCommand.Title" xml:space="preserve">
-    <value>网络客户端状态命令</value>
-  </data>
-  <data name="Text.Communication.SendCommand.Channel" xml:space="preserve">
-    <value>#{0}通道，{1}</value>
-  </data>
-  <data name="Text.Communication.SendCommand.Description" xml:space="preserve">
-    <value>1、以异步的方式进行网络发送，可通过type选项来指定发送的数据类型。如果发送的是文本则可以通过encoding选项来指定文本的编码方式。
-2、选项encoding的值为编码方式名称，譬如：ascii,utf7,utf8,utf-8,utf32,unicode,bigend,bigendian,gb2312...</value>
-  </data>
-  <data name="Text.Communication.SendCommand.Options.Type" xml:space="preserve">
-    <value>发送数据的类型，可以为文件(文件夹)或者字符串。</value>
-  </data>
-  <data name="Text.Communication.SendCommand.PrepareSendFiles" xml:space="preserve">
-    <value>发送“{0}”目录中的{1}个文件：</value>
-  </data>
-  <data name="Text.Communication.SendCommand.SendCompleted" xml:space="preserve">
-    <value>总计发送{0}项数据，其中失败{1}项。</value>
-  </data>
-  <data name="Text.Communication.SendCommand.SendFailed" xml:space="preserve">
-    <value>{0} 发送失败。</value>
-  </data>
-  <data name="Text.Communication.SendCommand.SendSucceed" xml:space="preserve">
-    <value>{0} 发送成功。</value>
-  </data>
-  <data name="Text.Communication.SendCommand.Title" xml:space="preserve">
-    <value>发送命令</value>
-  </data>
-  <data name="Text.Communication.ServerCommand.Description" xml:space="preserve">
-    <value>提供网络服务器各种操作的宿主命令。</value>
-  </data>
-  <data name="Text.Communication.ServerCommand.Options.Channel" xml:space="preserve">
-    <value>当前操作的通道编号，指定的通道必须存在并且是活动的。</value>
-  </data>
-  <data name="Text.Communication.ServerCommand.Title" xml:space="preserve">
-    <value>网络服务器命令</value>
-  </data>
-  <data name="Text.Communication.ServerStartCommand.Description" xml:space="preserve">
-    <value>启动当前服务器。</value>
-  </data>
-  <data name="Text.Communication.ServerStartCommand.Title" xml:space="preserve">
-    <value>服务器启动命令</value>
-  </data>
-  <data name="Text.Communication.ServerStatusCommand.Description" xml:space="preserve">
-    <value>查看当前服务器的运行参数及状态信息。</value>
-  </data>
-  <data name="Text.Communication.ServerStatusCommand.Title" xml:space="preserve">
-    <value>服务器状态命令</value>
-  </data>
-  <data name="Text.Communication.ServerStopCommand.Description" xml:space="preserve">
-    <value>停止当前服务器。</value>
-  </data>
-  <data name="Text.Communication.ServerStopCommand.Title" xml:space="preserve">
-    <value>服务器停止命令</value>
-  </data>
+
   <data name="Text.ContentType.File" xml:space="preserve">
     <value>文件。</value>
   </data>
@@ -238,21 +173,7 @@
   <data name="Text.HelpCommand.Name" xml:space="preserve">
     <value>帮助命令</value>
   </data>
-  <data name="Text.IsConnected" xml:space="preserve">
-    <value>是否已经连接</value>
-  </data>
-  <data name="Text.LastConnectTime" xml:space="preserve">
-    <value>最后连接时间</value>
-  </data>
-  <data name="Text.LastReceivedTime" xml:space="preserve">
-    <value>最后接收时间</value>
-  </data>
-  <data name="Text.LastSendTime" xml:space="preserve">
-    <value>最后发送时间</value>
-  </data>
-  <data name="Text.LocalEndPoint" xml:space="preserve">
-    <value>本地网络端点</value>
-  </data>
+
   <data name="Text.Message.CommandNotFound" xml:space="preserve">
     <value>没有找到指定‘{0}’的命令。</value>
   </data>
@@ -301,9 +222,6 @@
   </data>
   <data name="Text.QueueOutCommand.Message" xml:space="preserve">
     <value>第 {0} 轮，出队 {1} 条记录，{2} 队列。</value>
-  </data>
-  <data name="Text.RemoteEndPoint" xml:space="preserve">
-    <value>远程网络端点</value>
   </data>
   <data name="Text.Required" xml:space="preserve">
     <value>必须的</value>
