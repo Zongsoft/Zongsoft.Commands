@@ -69,13 +69,13 @@ namespace Zongsoft.Options.Commands
 				throw new CommandException(ResourceUtility.GetString("Text.Command.MissingArguments"));
 
 			if(context.Expression.Arguments.Length == 1)
-				result = optionProvider.GetOptionObject(context.Expression.Arguments[0]);
+				result = optionProvider.GetOptionValue(context.Expression.Arguments[0]);
 			else
 			{
 				result = new object[context.Expression.Arguments.Length];
 
 				for(int i = 0; i < context.Expression.Arguments.Length; i++)
-					((object[])result)[i] = optionProvider.GetOptionObject(context.Expression.Arguments[i]);
+					((object[])result)[i] = optionProvider.GetOptionValue(context.Expression.Arguments[i]);
 			}
 
 			//打印获取的结果信息
