@@ -16,11 +16,6 @@
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
 
-		<commandNode name="Sequence" sequence="{srv:~}" type="Zongsoft.Commands.SequenceCommand, Zongsoft.Commands">
-			<object name="Get" type="Zongsoft.Commands.SequenceGetCommand, Zongsoft.Commands" />
-			<object name="Reset" type="Zongsoft.Commands.SequenceResetCommand, Zongsoft.Commands" />
-		</commandNode>
-
 		<commandNode name="Services" type="Zongsoft.Services.Commands.ServicesCommand, Zongsoft.Commands" >
 			<commandNode name="Get" type="Zongsoft.Services.Commands.ServicesGetCommand, Zongsoft.Commands" />
 		</commandNode>

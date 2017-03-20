@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
   <data name="Text.AnExceptionOccurredOnRun" xml:space="preserve">
     <value>在运行过程中发生了一个异常：</value>
   </data>
@@ -154,7 +153,6 @@
   <data name="Text.CommandUsages" xml:space="preserve">
     <value>命令使用方法：</value>
   </data>
-
   <data name="Text.ContentType.File" xml:space="preserve">
     <value>文件。</value>
   </data>
@@ -173,7 +171,6 @@
   <data name="Text.HelpCommand.Name" xml:space="preserve">
     <value>帮助命令</value>
   </data>
-
   <data name="Text.Message.CommandNotFound" xml:space="preserve">
     <value>没有找到指定‘{0}’的命令。</value>
   </data>
@@ -225,9 +222,6 @@
   </data>
   <data name="Text.Required" xml:space="preserve">
     <value>必须的</value>
-  </data>
-  <data name="Text.SequenceCommand.MissingArguments" xml:space="preserve">
-    <value>缺少命令参数，请至少指定一个要操作的序列器名称。</value>
   </data>
   <data name="Text.ServerHasBeenStarted" xml:space="preserve">
     <value>服务器已经启动。</value>
