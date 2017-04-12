@@ -48,6 +48,9 @@
     <Compile Include="Collections\QueueInCommand.cs" />
     <Compile Include="Collections\QueueOutCommand.cs" />
     <Compile Include="HelpCommand.cs" />
+    <Compile Include="IO\FileCommand.cs" />
+    <Compile Include="IO\FileMoveCommand.cs" />
+    <Compile Include="IO\FileCopyCommand.cs" />
     <Compile Include="Options\OptionsCommand.cs" />
     <Compile Include="Options\OptionsGetCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,7 +2,7 @@
  * Authors:
  *   钟峰(Popeye Zhong) <zongsoft@gmail.com>
  *
- * Copyright (C) 2011-2016 Zongsoft Corporation <http://www.zongsoft.com>
+ * Copyright (C) 2011-2017 Zongsoft Corporation <http://www.zongsoft.com>
  *
  * This file is part of Zongsoft.Commands.
  *
@@ -25,35 +25,36 @@
  */
 
 using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Zongsoft.Services;
+using Zongsoft.Resources;
 
-namespace Zongsoft.Commands
+namespace Zongsoft.IO.Commands
 {
-	internal static class Utility
+	public class FileMoveCommand : CommandBase<CommandContext>
 	{
-		public static T GetService<T>(CommandTreeNode current, Func<ICommand, T> predicate) where T : class
+		#region 构造函数
+		public FileMoveCommand() : base("Move")
 		{
-			T result;
+		}
 
-			while(current != null)
-			{
-				if(current.Command != null)
-				{
-					result = predicate(current.Command);
+		public FileMoveCommand(string name) : base(name)
+		{
+		}
+		#endregion
 
-					if(result != null)
-						return result;
-				}
+		#region 执行方法
+		protected override object OnExecute(CommandContext context)
+		{
+			if(context.Expression.Arguments.Length != 2)
+				throw new CommandException(ResourceUtility.GetString("Text.Command.RequiresCountOfArguments", "2"));
 
-				current = current.Parent;
-			}
+			FileSystem.File.Move(context.Expression.Arguments[0], context.Expression.Arguments[1]);
 
 			return null;
 		}
+		#endregion
 	}
 }

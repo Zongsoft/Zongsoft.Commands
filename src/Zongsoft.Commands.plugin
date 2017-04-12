@@ -16,6 +16,11 @@
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
 
+		<commandNode name="File" type="Zongsoft.IO.Commands.FileCommand, Zongsoft.Commands">
+			<object name="Copy" type="Zongsoft.IO.Commands.FileCopyCommand, Zongsoft.Commands" />
+			<object name="Move" type="Zongsoft.IO.Commands.FileMoveCommand, Zongsoft.Commands" />
+		</commandNode>
+
 		<commandNode name="Services" type="Zongsoft.Services.Commands.ServicesCommand, Zongsoft.Commands" >
 			<commandNode name="Get" type="Zongsoft.Services.Commands.ServicesGetCommand, Zongsoft.Commands" />
 		</commandNode>

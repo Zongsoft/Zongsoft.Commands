@@ -2,7 +2,7 @@
  * Authors:
  *   钟峰(Popeye Zhong) <zongsoft@gmail.com>
  *
- * Copyright (C) 2011-2016 Zongsoft Corporation <http://www.zongsoft.com>
+ * Copyright (C) 2011-2017 Zongsoft Corporation <http://www.zongsoft.com>
  *
  * This file is part of Zongsoft.Commands.
  *
@@ -25,35 +25,57 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Zongsoft.Services;
+using Zongsoft.Resources;
 
-namespace Zongsoft.Commands
+namespace Zongsoft.IO.Commands
 {
-	internal static class Utility
+	public class FileCommand : CommandBase<CommandContext>
 	{
-		public static T GetService<T>(CommandTreeNode current, Func<ICommand, T> predicate) where T : class
+		#region 成员字段
+		private IFile _fileProvider;
+		#endregion
+
+		#region 构造函数
+		public FileCommand() : base("File")
 		{
-			T result;
+			_fileProvider = FileSystem.File;
+		}
 
-			while(current != null)
+		public FileCommand(string name) : base(name)
+		{
+			_fileProvider = FileSystem.File;
+		}
+		#endregion
+
+		#region 公共属性
+		public IFile FileProvider
+		{
+			get
 			{
-				if(current.Command != null)
-				{
-					result = predicate(current.Command);
-
-					if(result != null)
-						return result;
-				}
-
-				current = current.Parent;
+				return _fileProvider;
 			}
+			set
+			{
+				if(value == null)
+					throw new ArgumentNullException();
+
+				_fileProvider = value;
+			}
+		}
+		#endregion
+
+		#region 执行方法
+		protected override object OnExecute(CommandContext context)
+		{
+			if(_fileProvider == null)
+				context.Output.WriteLine("Missing the file provider.");
+			else
+				context.Output.WriteLine(_fileProvider.ToString());
 
 			return null;
 		}
+		#endregion
 	}
 }

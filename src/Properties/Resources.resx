@@ -141,6 +141,9 @@
   <data name="Text.Command.MissingArguments" xml:space="preserve">
     <value>没有指定命令参数，请至少指定一个命令参数。</value>
   </data>
+  <data name="Text.Command.NotEnoughCountOfArguments" xml:space="preserve">
+    <value>命令参数未够，请指定{0}个参数。</value>
+  </data>
   <data name="Text.Command.Options.Encoding" xml:space="preserve">
     <value>字符编码类型。</value>
   </data>

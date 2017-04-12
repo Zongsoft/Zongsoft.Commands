@@ -38,20 +38,23 @@ namespace Zongsoft.Collections.Commands
 		#region 成员字段
 		private IQueue _queue;
 		private IQueueProvider _queueProvider;
+
+		private Zongsoft.Services.IServiceProvider _serviceProvider;
 		#endregion
 
 		#region 构造函数
-		public QueueCommand() : this("Queue")
+		public QueueCommand(Zongsoft.Services.IServiceProvider serviceProvider) : base("Queue")
 		{
+			_serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
 		}
 
-		public QueueCommand(string name) : base(name)
+		public QueueCommand(Zongsoft.Services.IServiceProvider serviceProvider, string name) : base(name)
 		{
+			_serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
 		}
 		#endregion
 
 		#region 公共属性
-		[ServiceDependency]
 		public IQueue Queue
 		{
 			get
@@ -60,14 +63,10 @@ namespace Zongsoft.Collections.Commands
 			}
 			set
 			{
-				if(value == null)
-					throw new ArgumentNullException();
-
-				_queue = value;
+				_queue = value ?? throw new ArgumentNullException();
 			}
 		}
 
-		[ServiceDependency]
 		public IQueueProvider QueueProvider
 		{
 			get
@@ -76,10 +75,7 @@ namespace Zongsoft.Collections.Commands
 			}
 			set
 			{
-				if(value == null)
-					throw new ArgumentNullException();
-
-				_queueProvider = value;
+				_queueProvider = value ?? throw new ArgumentNullException();
 			}
 		}
 		#endregion
@@ -87,21 +83,21 @@ namespace Zongsoft.Collections.Commands
 		#region 执行方法
 		protected override object OnExecute(CommandContext context)
 		{
-			var queueName = string.Empty;
+			var name = string.Empty;
 
-			if(context.Expression.Options.TryGetValue("queue", out queueName))
+			if(context.Expression.Options.TryGetValue("name", out name))
 			{
-				var provider = this.QueueProvider;
+				var parts = name.Split('@');
 
-				if(provider == null)
+				if(parts.Length == 2)
+					_queueProvider = _serviceProvider.ResolveRequired<IQueueProvider>(parts[1]);
+				else
+					_queueProvider = _serviceProvider.ResolveRequired<IQueueProvider>();
+
+				if(_queueProvider == null)
 					throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.MissingQueueProvider"));
 
-				var queue = _queueProvider.GetQueue(queueName);
-
-				if(queue == null)
-					throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.NotFoundQueue", queueName));
-
-				_queue = queue;
+				_queue = _queueProvider.GetQueue(parts[0]) ?? throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.NotFoundQueue", name));
 			}
 
 			if(_queue == null)
