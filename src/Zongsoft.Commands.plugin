@@ -29,6 +29,11 @@
 			<object name="Get" type="Zongsoft.Options.Commands.OptionsGetCommand, Zongsoft.Commands" />
 		</commandNode>
 
+		<commandNode name="Messaging" type="Zongsoft.Messaging.Commands.ListenerCommand, Zongsoft.Commands">
+			<object name="Start" type="Zongsoft.Messaging.Commands.ListenerStartCommand, Zongsoft.Commands" />
+			<object name="Stop" type="Zongsoft.Messaging.Commands.ListenerStopCommand, Zongsoft.Commands" />
+		</commandNode>
+
 		<commandNode name="Collections" />
 	</extension>
 

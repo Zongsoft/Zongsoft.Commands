@@ -45,12 +45,18 @@ namespace Zongsoft.Collections.Commands
 		#region 构造函数
 		public QueueCommand(Zongsoft.Services.IServiceProvider serviceProvider) : base("Queue")
 		{
-			_serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+			if(serviceProvider == null)
+				throw new ArgumentNullException(nameof(serviceProvider));
+
+			_serviceProvider = serviceProvider;
 		}
 
 		public QueueCommand(Zongsoft.Services.IServiceProvider serviceProvider, string name) : base(name)
 		{
-			_serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+			if(serviceProvider == null)
+				throw new ArgumentNullException(nameof(serviceProvider));
+
+			_serviceProvider = serviceProvider;
 		}
 		#endregion
 
@@ -63,7 +69,10 @@ namespace Zongsoft.Collections.Commands
 			}
 			set
 			{
-				_queue = value ?? throw new ArgumentNullException();
+				if(value == null)
+					throw new ArgumentNullException();
+
+				_queue = value;
 			}
 		}
 
@@ -75,7 +84,10 @@ namespace Zongsoft.Collections.Commands
 			}
 			set
 			{
-				_queueProvider = value ?? throw new ArgumentNullException();
+				if(value == null)
+					throw new ArgumentNullException();
+
+				_queueProvider = value;
 			}
 		}
 		#endregion
@@ -97,7 +109,10 @@ namespace Zongsoft.Collections.Commands
 				if(_queueProvider == null)
 					throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.MissingQueueProvider"));
 
-				_queue = _queueProvider.GetQueue(parts[0]) ?? throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.NotFoundQueue", name));
+				_queue = _queueProvider.GetQueue(parts[0]);
+
+				if(_queue == null)
+					throw new CommandException(ResourceUtility.GetString("Text.QueueCommand.NotFoundQueue", name));
 			}
 
 			if(_queue == null)

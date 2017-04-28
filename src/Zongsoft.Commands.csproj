@@ -52,6 +52,9 @@
     <Compile Include="IO\FileOpenCommand.cs" />
     <Compile Include="IO\FileMoveCommand.cs" />
     <Compile Include="IO\FileCopyCommand.cs" />
+    <Compile Include="Messaging\ListenerCommand.cs" />
+    <Compile Include="Messaging\ListenerStartCommand.cs" />
+    <Compile Include="Messaging\ListenerStopCommand.cs" />
     <Compile Include="Options\OptionsCommand.cs" />
     <Compile Include="Options\OptionsGetCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
