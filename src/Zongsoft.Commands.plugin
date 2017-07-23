@@ -16,35 +16,35 @@
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
 
-		<commandNode name="File" type="Zongsoft.IO.Commands.FileCommand, Zongsoft.Commands">
+		<object name="File" type="Zongsoft.IO.Commands.FileCommand, Zongsoft.Commands">
 			<object name="Copy" type="Zongsoft.IO.Commands.FileCopyCommand, Zongsoft.Commands" />
 			<object name="Move" type="Zongsoft.IO.Commands.FileMoveCommand, Zongsoft.Commands" />
-		</commandNode>
+		</object>
 
-		<commandNode name="Services" type="Zongsoft.Services.Commands.ServicesCommand, Zongsoft.Commands" >
-			<commandNode name="Get" type="Zongsoft.Services.Commands.ServicesGetCommand, Zongsoft.Commands" />
-		</commandNode>
+		<object name="Services" type="Zongsoft.Services.Commands.ServicesCommand, Zongsoft.Commands" >
+			<object name="Get" type="Zongsoft.Services.Commands.ServicesGetCommand, Zongsoft.Commands" />
+		</object>
 
-		<commandNode name="Options" type="Zongsoft.Options.Commands.OptionsCommand, Zongsoft.Commands">
+		<object name="Options" type="Zongsoft.Options.Commands.OptionsCommand, Zongsoft.Commands">
 			<object name="Get" type="Zongsoft.Options.Commands.OptionsGetCommand, Zongsoft.Commands" />
-		</commandNode>
+		</object>
 
-		<commandNode name="Messaging" type="Zongsoft.Messaging.Commands.ListenerCommand, Zongsoft.Commands">
+		<object name="Messaging" type="Zongsoft.Messaging.Commands.ListenerCommand, Zongsoft.Commands">
 			<object name="Start" type="Zongsoft.Messaging.Commands.ListenerStartCommand, Zongsoft.Commands" />
 			<object name="Stop" type="Zongsoft.Messaging.Commands.ListenerStopCommand, Zongsoft.Commands" />
-		</commandNode>
+		</object>
 
-		<commandNode name="Collections" />
+		<object name="Collections" />
 	</extension>
 
 	<extension path="/Workbench/Executor/Commands/Collections">
-		<commandNode name="Queue" queue="{srv:Queue}" type="Zongsoft.Collections.Commands.QueueCommand, Zongsoft.Commands">
+		<object name="Queue" queue="{srv:Queue}" type="Zongsoft.Collections.Commands.QueueCommand, Zongsoft.Commands">
 			<object name="In" type="Zongsoft.Collections.Commands.QueueInCommand, Zongsoft.Commands" />
 			<object name="Out" type="Zongsoft.Collections.Commands.QueueOutCommand, Zongsoft.Commands" />
 			<object name="Peek" type="Zongsoft.Collections.Commands.QueuePeekCommand, Zongsoft.Commands" />
 			<object name="Clear" type="Zongsoft.Collections.Commands.QueueClearCommand, Zongsoft.Commands" />
 			<object name="Count" type="Zongsoft.Collections.Commands.QueueCountCommand, Zongsoft.Commands" />
-		</commandNode>
+		</object>
 	</extension>
 
 </plugin>
