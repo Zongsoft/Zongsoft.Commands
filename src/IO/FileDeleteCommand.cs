@@ -25,76 +25,45 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
 
 using Zongsoft.Services;
 using Zongsoft.Resources;
 
 namespace Zongsoft.IO.Commands
 {
-	[CommandOption("mode", typeof(FileMode), FileMode.Open, "")]
-	[CommandOption("access", typeof(FileAccess), FileAccess.Read, "")]
-	[CommandOption("share", typeof(FileShare), FileShare.Read, "")]
-	public class FileOpenCommand : CommandBase<CommandContext>, ICommandCompletion
+	public class FileDeleteCommand : CommandBase<CommandContext>
 	{
 		#region 构造函数
-		public FileOpenCommand() : base("Open")
+		public FileDeleteCommand() : base("Delete")
 		{
 		}
 
-		public FileOpenCommand(string name) : base(name)
+		public FileDeleteCommand(string name) : base(name)
 		{
 		}
 		#endregion
 
-		#region 执行方法
+		#region 重写方法
 		protected override object OnExecute(CommandContext context)
 		{
-			if(context.Expression.Arguments.Length < 1)
+			if(context.Expression.Arguments.Length == 0)
 				throw new CommandException(ResourceUtility.GetString("Text.Command.MissingArguments"));
 
-			var list = new List<Stream>(context.Expression.Arguments.Length);
+			for(int i=0; i< context.Expression.Arguments.Length; i++)
+			{
+				var filePath = context.Expression.Arguments[i];
+				var message = string.Empty;
+				var succeed = FileSystem.File.Delete(filePath);
 
-			try
-			{
-				foreach(var argument in context.Expression.Arguments)
-				{
-					list.Add(FileSystem.File.Open(argument,
-						context.Expression.Options.GetValue<FileMode>("mode"),
-						context.Expression.Options.GetValue<FileAccess>("access"),
-						context.Expression.Options.GetValue<FileShare>("share")));
-				}
-			}
-			catch
-			{
-				foreach(var item in list)
-				{
-					if(item != null)
-						item.Dispose();
-				}
+				if(succeed)
+					message = ResourceUtility.GetString("Text.FileDeleteSucceed.Message");
+				else
+					message = ResourceUtility.GetString("Text.FileDeleteFailed.Message");
+
+				context.Output.WriteLine((succeed ? CommandOutletColor.Green : CommandOutletColor.Red), $"[{i+1}] `{filePath}` {message}");
 			}
 
-			if(list.Count == 1)
-				return list[0];
-			else
-				return list.ToArray();
-		}
-		#endregion
-
-		#region 完成回调
-		public void OnCompleted(CommandCompletionContext context)
-		{
-			var streams = context.Result as IEnumerable<Stream>;
-
-			if(streams == null)
-				return;
-
-			foreach(var stream in streams)
-			{
-				if(stream != null)
-					stream.Close();
-			}
+			return null;
 		}
 		#endregion
 	}

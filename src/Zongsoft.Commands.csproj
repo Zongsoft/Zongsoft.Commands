@@ -49,9 +49,11 @@
     <Compile Include="Collections\QueueOutCommand.cs" />
     <Compile Include="HelpCommand.cs" />
     <Compile Include="IO\FileCommand.cs" />
+    <Compile Include="IO\FileDeleteCommand.cs" />
     <Compile Include="IO\FileOpenCommand.cs" />
     <Compile Include="IO\FileMoveCommand.cs" />
     <Compile Include="IO\FileCopyCommand.cs" />
+    <Compile Include="JsonCommand.cs" />
     <Compile Include="Messaging\ListenerCommand.cs" />
     <Compile Include="Messaging\ListenerStartCommand.cs" />
     <Compile Include="Messaging\ListenerStopCommand.cs" />
