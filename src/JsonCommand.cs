@@ -61,15 +61,17 @@ namespace Zongsoft.Commands
 		#region 重写方法
 		protected override object OnExecute(CommandContext context)
 		{
-			if(context.Parameter == null)
+			var graph = context.Parameter;
+
+			if(graph == null)
 				return null;
 
-			if(context.Parameter is string || context.Parameter is System.Text.StringBuilder)
-				return Serializer.Json.Deserialize(context.Parameter.ToString());
+			if(context.Parameter is System.Text.StringBuilder)
+				graph = context.Parameter.ToString();
 			else if(context.Parameter is Stream stream)
-				return Serializer.Json.Deserialize(stream);
+				graph = Serializer.Json.Deserialize(stream);
 			else if(context.Parameter is TextReader reader)
-				return Serializer.Json.Deserialize(reader);
+				graph = Serializer.Json.Deserialize(reader);
 
 			var settings = new TextSerializationSettings()
 			{
@@ -79,7 +81,7 @@ namespace Zongsoft.Commands
 				NamingConvention = context.Expression.Options.GetValue<SerializationNamingConvention>(KEY_CASING_OPTION),
 			};
 
-			var json = Serializer.Json.Serialize(context.Parameter, settings);
+			var json = Serializer.Json.Serialize(graph, settings);
 
 			if(json != null)
 				context.Output.WriteLine(json);
