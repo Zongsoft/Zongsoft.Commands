@@ -126,6 +126,9 @@
   <data name="Text.AssemblyCommand.Name" xml:space="preserve">
     <value>程序集查看命令</value>
   </data>
+  <data name="Text.AuthenticodeGenerateCommand.Overfrequency" xml:space="preserve">
+    <value>验证码生成的太频繁，请距离一定时间间隔之后再调用该操作。</value>
+  </data>
   <data name="Text.CannotObtainCommand" xml:space="preserve">
     <value>无法获取 {0} 命令。</value>
   </data>

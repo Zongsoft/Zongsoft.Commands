@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?>
+
 <plugin name="Zongsoft.Commands"
         title="Zongsoft Commands Plugin"
         author="Popeye Zhong(9555843@qq.com)"
@@ -16,6 +17,15 @@
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
 		<object name="Json" type="Zongsoft.Commands.JsonCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
+
+		<object name="Authenticode">
+			<authenticode.command>
+				<object type="Zongsoft.Security.Commands.AuthenticodeCommand, Zongsoft.Commands" />
+			</authenticode.command>
+
+			<object name="Generate" type="Zongsoft.Security.Commands.AuthenticodeGenerateCommand, Zongsoft.Commands" />
+			<object name="Verify" type="Zongsoft.Security.Commands.AuthenticodeVerifyCommand, Zongsoft.Commands" />
+		</object>
 
 		<object name="File">
 			<file.command>
