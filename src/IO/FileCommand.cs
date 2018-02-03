@@ -25,56 +25,75 @@
  */
 
 using System;
+using System.IO;
+using System.Text;
+using System.Collections.Generic;
 
 using Zongsoft.Services;
 using Zongsoft.Resources;
 
 namespace Zongsoft.IO.Commands
 {
-	public class FileCommand : CommandBase<CommandContext>
+	[CommandOption(KEY_MODE_OPTION, typeof(FileMode), FileMode.Open, "Text.FileCommand.Options.Mode")]
+	[CommandOption(KEY_SHARE_OPTION, typeof(FileShare), FileShare.Read, "Text.FileCommand.Options.Share")]
+	[CommandOption(KEY_ACCESS_OPTION, typeof(FileAccess), FileAccess.Read, "Text.FileCommand.Options.Access")]
+	[CommandOption(KEY_ENCODING_OPTION, typeof(Encoding), null, "Text.FileCommand.Options.Encoding")]
+	public class FileCommand : CommandBase<CommandContext>, ICommandCompletion
 	{
-		#region 成员字段
-		private IFile _fileProvider;
+		#region 常量定义
+		private const string KEY_MODE_OPTION = "mode";
+		private const string KEY_SHARE_OPTION = "share";
+		private const string KEY_ACCESS_OPTION = "access";
+		private const string KEY_ENCODING_OPTION = "encoding";
 		#endregion
 
 		#region 构造函数
 		public FileCommand() : base("File")
 		{
-			_fileProvider = FileSystem.File;
 		}
 
 		public FileCommand(string name) : base(name)
 		{
-			_fileProvider = FileSystem.File;
-		}
-		#endregion
-
-		#region 公共属性
-		public IFile FileProvider
-		{
-			get
-			{
-				return _fileProvider;
-			}
-			set
-			{
-				if(value == null)
-					throw new ArgumentNullException();
-
-				_fileProvider = value;
-			}
 		}
 		#endregion
 
 		#region 执行方法
 		protected override object OnExecute(CommandContext context)
 		{
-			if(_fileProvider == null)
-				context.Output.WriteLine("Missing the file provider.");
-			else
-				context.Output.WriteLine(_fileProvider.ToString());
+			bool isSaving = context.Expression.Index > 0 && context.Expression.Next == null;
 
-			return null;
+			if(!context.Expression.Options.TryGetValue<FileMode>(KEY_MODE_OPTION, out var mode))
+				mode = isSaving ? FileMode.Create : FileMode.Open;
+
+			if(!context.Expression.Options.TryGetValue<FileAccess>(KEY_ACCESS_OPTION, out var access))
+				access = isSaving ? FileAccess.ReadWrite : FileAccess.Read;
+
+			//打开一个或多个文件流
+			var result = FileUtility.OpenFile(context, mode, access, context.Expression.Options.GetValue<FileShare>(KEY_SHARE_OPTION));
+
+			//如果是写入操作则执行保存方法
+			if(isSaving && result != null)
+				FileUtility.Save(result, context.Parameter, context.Expression.Options.GetValue<Encoding>(KEY_ENCODING_OPTION));
+
+			return result;
+		}
+		#endregion
+
+		#region 执行完成
+		public void OnCompleted(CommandCompletionContext context)
+		{
+			if(context.Result is IEnumerable<Stream> streams)
+			{
+				foreach(var stream in streams)
+				{
+					if(stream != null)
+						stream.Close();
+				}
+			}
+			else if(context.Result is Stream stream)
+			{
+				stream.Close();
+			}
 		}
 		#endregion
 	}

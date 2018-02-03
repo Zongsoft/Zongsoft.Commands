@@ -165,8 +165,20 @@
   <data name="Text.ContentType.Text" xml:space="preserve">
     <value>文本字符。</value>
   </data>
+  <data name="Text.ConvertCommand.Description" xml:space="preserve">
+    <value>将输入参数转换成指定类型并返回。</value>
+  </data>
+  <data name="Text.ConvertCommand.Name" xml:space="preserve">
+    <value>转换命令</value>
+  </data>
   <data name="Text.Disabled" xml:space="preserve">
     <value>已禁用</value>
+  </data>
+  <data name="Text.EchoCommand.Description" xml:space="preserve">
+    <value>输出命令参数。</value>
+  </data>
+  <data name="Text.EchoCommand.Name" xml:space="preserve">
+    <value>回声命令</value>
   </data>
   <data name="Text.FileDeleteFailed.Message" xml:space="preserve">
     <value>文件删除失败。</value>
@@ -206,6 +218,9 @@
   </data>
   <data name="Text.No" xml:space="preserve">
     <value>否</value>
+  </data>
+  <data name="Text.OpenFile.Prompt" xml:space="preserve">
+    <value>请输入要打开的文件路径：</value>
   </data>
   <data name="Text.Optional" xml:space="preserve">
     <value>可选的</value>
@@ -252,6 +267,9 @@
   </data>
   <data name="Text.Required" xml:space="preserve">
     <value>必须的</value>
+  </data>
+  <data name="Text.SaveFile.Prompt" xml:space="preserve">
+    <value>请输入要保存的文件路径：</value>
   </data>
   <data name="Text.ServerHasBeenStarted" xml:space="preserve">
     <value>服务器已经启动。</value>

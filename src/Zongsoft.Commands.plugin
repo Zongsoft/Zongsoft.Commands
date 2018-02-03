@@ -15,6 +15,8 @@
 
 	<extension path="/Workbench/Executor/Commands">
 		<object name="Help" type="Zongsoft.Commands.HelpCommand, Zongsoft.Commands" />
+		<object name="Echo" type="Zongsoft.Commands.EchoCommand, Zongsoft.Commands" />
+		<object name="Cast" type="Zongsoft.Commands.CastCommand, Zongsoft.Commands" />
 		<object name="Json" type="Zongsoft.Commands.JsonCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
 
@@ -32,6 +34,8 @@
 				<object type="Zongsoft.IO.Commands.FileCommand, Zongsoft.Commands" />
 			</file.command>
 
+			<object name="Open" type="Zongsoft.IO.Commands.FileOpenCommand, Zongsoft.Commands" />
+			<object name="Save" type="Zongsoft.IO.Commands.FileSaveCommand, Zongsoft.Commands" />
 			<object name="Copy" type="Zongsoft.IO.Commands.FileCopyCommand, Zongsoft.Commands" />
 			<object name="Move" type="Zongsoft.IO.Commands.FileMoveCommand, Zongsoft.Commands" />
 			<object name="Delete" type="Zongsoft.IO.Commands.FileDeleteCommand, Zongsoft.Commands" />

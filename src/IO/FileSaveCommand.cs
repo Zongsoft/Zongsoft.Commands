@@ -26,6 +26,7 @@
 
 using System;
 using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 using Zongsoft.Services;
@@ -33,23 +34,25 @@ using Zongsoft.Resources;
 
 namespace Zongsoft.IO.Commands
 {
-	[CommandOption(KEY_MODE_OPTION, typeof(FileMode), FileMode.Open, "Text.FileCommand.Options.Mode")]
+	[CommandOption(KEY_MODE_OPTION, typeof(FileMode), FileMode.OpenOrCreate, "Text.FileCommand.Options.Mode")]
 	[CommandOption(KEY_SHARE_OPTION, typeof(FileShare), FileShare.Read, "Text.FileCommand.Options.Share")]
-	[CommandOption(KEY_ACCESS_OPTION, typeof(FileAccess), FileAccess.Read, "Text.FileCommand.Options.Access")]
-	public class FileOpenCommand : CommandBase<CommandContext>, ICommandCompletion
+	[CommandOption(KEY_ACCESS_OPTION, typeof(FileAccess), FileAccess.ReadWrite, "Text.FileCommand.Options.Access")]
+	[CommandOption(KEY_ENCODING_OPTION, typeof(Encoding), null, "Text.FileCommand.Options.Encoding")]
+	public class FileSaveCommand : CommandBase<CommandContext>, ICommandCompletion
 	{
 		#region 常量定义
 		private const string KEY_MODE_OPTION = "mode";
 		private const string KEY_SHARE_OPTION = "share";
 		private const string KEY_ACCESS_OPTION = "access";
+		private const string KEY_ENCODING_OPTION = "encoding";
 		#endregion
 
 		#region 构造函数
-		public FileOpenCommand() : base("Open")
+		public FileSaveCommand() : base("Save")
 		{
 		}
 
-		public FileOpenCommand(string name) : base(name)
+		public FileSaveCommand(string name) : base(name)
 		{
 		}
 		#endregion
@@ -57,10 +60,16 @@ namespace Zongsoft.IO.Commands
 		#region 执行方法
 		protected override object OnExecute(CommandContext context)
 		{
-			return FileUtility.OpenFile(context,
+			//打开一个或多个文件流
+			var result = FileUtility.OpenFile(context,
 				context.Expression.Options.GetValue<FileMode>(KEY_MODE_OPTION),
 				context.Expression.Options.GetValue<FileAccess>(KEY_ACCESS_OPTION),
 				context.Expression.Options.GetValue<FileShare>(KEY_SHARE_OPTION));
+
+			if(result != null)
+				FileUtility.Save(result, context.Parameter, context.Expression.Options.GetValue<Encoding>(KEY_ENCODING_OPTION));
+
+			return result;
 		}
 		#endregion
 
