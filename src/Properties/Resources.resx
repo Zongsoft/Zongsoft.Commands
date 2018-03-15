@@ -126,9 +126,6 @@
   <data name="Text.AssemblyCommand.Name" xml:space="preserve">
     <value>程序集查看命令</value>
   </data>
-  <data name="Text.AuthenticodeGenerateCommand.Overfrequency" xml:space="preserve">
-    <value>验证码生成的太频繁，请距离一定时间间隔之后再调用该操作。</value>
-  </data>
   <data name="Text.CannotObtainCommand" xml:space="preserve">
     <value>无法获取 {0} 命令。</value>
   </data>
@@ -271,6 +268,39 @@
   <data name="Text.SaveFile.Prompt" xml:space="preserve">
     <value>请输入要保存的文件路径：</value>
   </data>
+  <data name="Text.SecretCommand.Description" xml:space="preserve">
+    <value>提供验证码生成、校验等命令的宿主，通过该命令可更改验证码相关命令的验证码提供程序，譬如：services.get secret | secret</value>
+  </data>
+  <data name="Text.SecretCommand.Title" xml:space="preserve">
+    <value>秘密（验证码）宿主命令</value>
+  </data>
+  <data name="Text.SecretGenerateCommand.Description" xml:space="preserve">
+    <value>生成一个或多个验证码，譬如：secret.generate -name:'user.phone.change:100' -pattern:#4 -timeout:15m 13800000001 13800000002 13800000003</value>
+  </data>
+  <data name="Text.SecretGenerateCommand.Options.Name" xml:space="preserve">
+    <value>验证码名称，该名称通常包含对应的目标标识（譬如：user.forget:100、user.email:100，其中数字100表示用户的唯一编号）。</value>
+  </data>
+  <data name="Text.SecretGenerateCommand.Options.Pattern" xml:space="preserve">
+    <value>验证码生成模式，如果不指定或空字符串则生成6位数字；也可以表示生成验证码的规则，基本模式定义如下：
+- guid|uuid，表示生成一个GUID值
+- #{number}，表示生成{number}个的数字字符，譬如：#4
+- ?{number}，表示生成{number}个的含有字母或数字的字符，譬如：?8</value>
+  </data>
+  <data name="Text.SecretGenerateCommand.Options.Timeout" xml:space="preserve">
+    <value>表示验证码的缓存时长，支持“s(秒)”、“m(分钟)”、“h(小时)”和“d(天)”这几种单位，譬如：15m(15分钟)、24h(24小时)、7d(7天)。</value>
+  </data>
+  <data name="Text.SecretGenerateCommand.Title" xml:space="preserve">
+    <value>生成秘密（验证码）命令</value>
+  </data>
+  <data name="Text.SecretVerifyCommand.Description" xml:space="preserve">
+    <value>校验一个验证码，譬如：secret.verify -name:'user.email:100' 123456</value>
+  </data>
+  <data name="Text.SecretVerifyCommand.Options.Name" xml:space="preserve">
+    <value>验证码名称，该名称通常包含对应的目标标识（譬如：user.forget:100、user.email:100，其中数字100表示用户的唯一编号）。</value>
+  </data>
+  <data name="Text.SecretVerifyCommand.Title" xml:space="preserve">
+    <value>校验秘密（验证码）命令</value>
+  </data>
   <data name="Text.ServerHasBeenStarted" xml:space="preserve">
     <value>服务器已经启动。</value>
   </data>
@@ -292,13 +322,13 @@
 
 用法如下：
 
-[services.]get &amp;lt;service-name&amp;gt;
+services.get &lt;service-name&gt;
 	参数为要获取的服务名称，该名称为其在当前服务供应程序注册时声明的名称。
 
-[services.]get -contract:assemblyQualifiedName
+services.get -contract:assemblyQualifiedName
 	-contract 选项为要获取的服务类型限定名。
 
-[services.]get -contract:assemblyQualifiedName parameter
+services.get -contract:assemblyQualifiedName parameter
 	-contract 选项为要获取的服务类型限定名；参数为解析时传入的参数。</value>
   </data>
   <data name="Text.ServicesGetCommand.DisplayName" xml:space="preserve">

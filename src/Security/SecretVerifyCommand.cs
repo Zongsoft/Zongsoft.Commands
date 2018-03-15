@@ -35,23 +35,23 @@ namespace Zongsoft.Security.Commands
 	/// 提供验证码校验的命令类。
 	/// </summary>
 	/// <example>
-	///		<code>authenticode.verify -type:user.register -erasure '13800000001=1234' '13800000002=7890' 'popeye@zongsoft.com=abcxyz'</code>
+	///		<code>secret.verify -name:'user.email:100' 123456</code>
 	/// </example>
-	[CommandOption(KEY_TYPE_OPTION, typeof(string), null, false, "Text.AuthenticodeVerifyCommand.Options.Type")]
-	[CommandOption(KEY_ERASURE_OPTION, Type = null, Description = "Text.AuthenticodeVerifyCommand.Options.Erasure")]
-	public class AuthenticodeVerifyCommand : CommandBase<CommandContext>
+	[CommandOption(KEY_NAME_OPTION, typeof(string), null, true, "Text.SecretVerifyCommand.Options.Name")]
+	[System.ComponentModel.DisplayName("${Text.SecretVerifyCommand.Title}")]
+	[System.ComponentModel.Description("${Text.SecretVerifyCommand.Description}")]
+	public class SecretVerifyCommand : CommandBase<CommandContext>
 	{
 		#region 常量定义
-		private const string KEY_TYPE_OPTION = "type";
-		private const string KEY_ERASURE_OPTION = "erasure";
+		private const string KEY_NAME_OPTION = "name";
 		#endregion
 
 		#region 构造函数
-		public AuthenticodeVerifyCommand() : base("Verify")
+		public SecretVerifyCommand() : base("Verify")
 		{
 		}
 
-		public AuthenticodeVerifyCommand(string name) : base(name)
+		public SecretVerifyCommand(string name) : base(name)
 		{
 		}
 		#endregion
@@ -62,55 +62,21 @@ namespace Zongsoft.Security.Commands
 			if(context.Expression.Arguments.Length == 0)
 				throw new CommandException(Resources.ResourceUtility.GetString("Text.Command.MissingArguments"));
 
-			//从环境中查找缓存容器
-			var cache = AuthenticodeCommand.FindCache(context.CommandNode);
+			//从环境中查找秘密提供程序
+			var secretProvider = SecretCommand.FindSecretProvider(context.CommandNode);
 
-			if(cache == null)
-				throw new CommandException("Missing required cache for the command.");
+			if(secretProvider == null)
+				throw new CommandException("Missing required secret provider for the command.");
 
-			//将命令参数集转换成验证方式的字典，即“key=code”
-			var pairs = this.GetPairs(context.Expression.Arguments);
-
-			//如果转换的字典为空或空集，则说明命令参数集格式异常
-			if(pairs == null || pairs.Count == 0)
-				throw new CommandException("Invalid format of the command arguments.");
-
-			IList<bool> list = null;
-
-			if(pairs.Count > 1)
-				list = new List<bool>(context.Expression.Arguments.Length);
-
-			foreach(var pair in pairs)
+			if(secretProvider.Verify(context.Expression.Options.GetValue<string>(KEY_NAME_OPTION), context.Expression.Arguments[0], out var extra))
 			{
-				//获取验证码的缓存键
-				var cacheKey = AuthenticodeCommand.GetCacheKey(
-					context.Expression.Options.GetValue<string>(KEY_TYPE_OPTION),
-					pair.Key);
+				if(extra != null && extra.Length > 0)
+					context.Output.WriteLine(extra);
 
-				//获取验证码的缓存值
-				var cacheValue = cache.GetValue<string>(cacheKey);
-
-				//核查验证码是否相同（不区分大小写）
-				var succeed = string.Equals(
-					pair.Value,
-					AuthenticodeCommand.GetCacheValue(cacheValue),
-					StringComparison.OrdinalIgnoreCase);
-
-				//如果验证成功，并且指定了擦除选项则将验证码从缓存中删除
-				if(succeed && context.Expression.Options.Contains(KEY_ERASURE_OPTION))
-					cache.Remove(cacheKey);
-
-				if(list == null)
-					return succeed;
-
-				//将当前验证结果加入到结果集中
-				list.Add(succeed);
+				return true;
 			}
 
-			if(list.Count == 1)
-				return list[0];
-
-			return list;
+			return false;
 		}
 		#endregion
 

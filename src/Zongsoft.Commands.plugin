@@ -20,13 +20,13 @@
 		<object name="Json" type="Zongsoft.Commands.JsonCommand, Zongsoft.Commands" />
 		<object name="Assembly" type="Zongsoft.Commands.AssemblyCommand, Zongsoft.Commands" />
 
-		<object name="Authenticode">
-			<authenticode.command>
-				<object type="Zongsoft.Security.Commands.AuthenticodeCommand, Zongsoft.Commands" />
-			</authenticode.command>
+		<object name="Secret">
+			<secret.command>
+				<object type="Zongsoft.Security.Commands.SecretCommand, Zongsoft.Commands" />
+			</secret.command>
 
-			<object name="Generate" type="Zongsoft.Security.Commands.AuthenticodeGenerateCommand, Zongsoft.Commands" />
-			<object name="Verify" type="Zongsoft.Security.Commands.AuthenticodeVerifyCommand, Zongsoft.Commands" />
+			<object name="Generate" type="Zongsoft.Security.Commands.SecretGenerateCommand, Zongsoft.Commands" />
+			<object name="Verify" type="Zongsoft.Security.Commands.SecretVerifyCommand, Zongsoft.Commands" />
 		</object>
 
 		<object name="File">

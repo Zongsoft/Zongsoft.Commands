@@ -64,9 +64,9 @@
     <Compile Include="Options\OptionsCommand.cs" />
     <Compile Include="Options\OptionsGetCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\AuthenticodeVerifyCommand.cs" />
-    <Compile Include="Security\AuthenticodeGenerateCommand.cs" />
-    <Compile Include="Security\AuthenticodeCommand.cs" />
+    <Compile Include="Security\SecretVerifyCommand.cs" />
+    <Compile Include="Security\SecretGenerateCommand.cs" />
+    <Compile Include="Security\SecretCommand.cs" />
     <Compile Include="Services\ServicesCommand.cs" />
     <Compile Include="Services\ServicesGetCommand.cs" />
     <Compile Include="Utility.cs" />
