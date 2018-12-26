@@ -40,12 +40,12 @@ namespace Zongsoft.Options.Commands
 		#region 构造函数
 		public OptionsCommand() : base("Options")
 		{
-			_options = Zongsoft.ComponentModel.ApplicationContextBase.Current.OptionManager;
+			_options = Zongsoft.Services.ApplicationContext.Current.Options;
 		}
 
 		public OptionsCommand(string name) : base(name)
 		{
-			_options = Zongsoft.ComponentModel.ApplicationContextBase.Current.OptionManager;
+			_options = Zongsoft.Services.ApplicationContext.Current.Options;
 		}
 		#endregion
 
@@ -73,7 +73,10 @@ namespace Zongsoft.Options.Commands
 
 			if(manager != null)
 			{
-				this.Print(context.Output, manager.RootNode, 0);
+				foreach(var node in manager.Nodes)
+				{
+					this.Print(context.Output, node, 0);
+				}
 			}
 
 			return _options;
