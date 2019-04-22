@@ -66,12 +66,15 @@ namespace Zongsoft.Commands
 			if(graph == null)
 				return null;
 
-			if(context.Parameter is System.Text.StringBuilder)
-				graph = context.Parameter.ToString();
-			else if(context.Parameter is Stream stream)
-				graph = Serializer.Json.Deserialize(stream);
-			else if(context.Parameter is TextReader reader)
-				graph = Serializer.Json.Deserialize(reader);
+			//如果输入参数是文本或流或文本读取器，则反序列化它并返回
+			if(graph is string raw)
+				return Serializer.Json.Deserialize(raw);
+			if(graph is System.Text.StringBuilder text)
+				return Serializer.Json.Deserialize(text.ToString());
+			if(graph is Stream stream)
+				return Serializer.Json.Deserialize(stream);
+			if(graph is TextReader reader)
+				return Serializer.Json.Deserialize(reader);
 
 			var settings = new TextSerializationSettings()
 			{
