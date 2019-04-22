@@ -27,6 +27,7 @@
 using System;
 using System.IO;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 using Zongsoft.Services;
 using Zongsoft.Runtime.Serialization;
@@ -68,13 +69,13 @@ namespace Zongsoft.Commands
 
 			//如果输入参数是文本或流或文本读取器，则反序列化它并返回
 			if(graph is string raw)
-				return Serializer.Json.Deserialize(raw);
+				return Serializer.Json.Deserialize<Dictionary<string, object>>(raw);
 			if(graph is System.Text.StringBuilder text)
-				return Serializer.Json.Deserialize(text.ToString());
+				return Serializer.Json.Deserialize<Dictionary<string, object>>(text.ToString());
 			if(graph is Stream stream)
-				return Serializer.Json.Deserialize(stream);
+				return Serializer.Json.Deserialize<Dictionary<string, object>>(stream);
 			if(graph is TextReader reader)
-				return Serializer.Json.Deserialize(reader);
+				return Serializer.Json.Deserialize<Dictionary<string, object>>(reader);
 
 			var settings = new TextSerializationSettings()
 			{
