@@ -183,6 +183,12 @@
   <data name="Text.FileDeleteSucceed.Message" xml:space="preserve">
     <value>文件删除成功。</value>
   </data>
+  <data name="Text.FileExisted" xml:space="preserve">
+    <value>指定的“{0}”文件存在。</value>
+  </data>
+  <data name="Text.FileNotExisted" xml:space="preserve">
+    <value>指定的“{0}”文件不存在。</value>
+  </data>
   <data name="Text.FileOrDirectoryNotExists" xml:space="preserve">
     <value>{0}文件或目录是不存在的。</value>
   </data>

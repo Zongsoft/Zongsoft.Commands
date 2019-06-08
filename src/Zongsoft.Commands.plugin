@@ -38,6 +38,8 @@
 			<object name="Save" type="Zongsoft.IO.Commands.FileSaveCommand, Zongsoft.Commands" />
 			<object name="Copy" type="Zongsoft.IO.Commands.FileCopyCommand, Zongsoft.Commands" />
 			<object name="Move" type="Zongsoft.IO.Commands.FileMoveCommand, Zongsoft.Commands" />
+			<object name="Info" type="Zongsoft.IO.Commands.FileInfoCommand, Zongsoft.Commands" />
+			<object name="Exists" type="Zongsoft.IO.Commands.FileExistsCommand, Zongsoft.Commands" />
 			<object name="Delete" type="Zongsoft.IO.Commands.FileDeleteCommand, Zongsoft.Commands" />
 		</object>
 

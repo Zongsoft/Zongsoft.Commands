@@ -51,6 +51,8 @@
     <Compile Include="EchoCommand.cs" />
     <Compile Include="HelpCommand.cs" />
     <Compile Include="IO\FileCommand.cs" />
+    <Compile Include="IO\FileInfoCommand.cs" />
+    <Compile Include="IO\FileExistsCommand.cs" />
     <Compile Include="IO\FileDeleteCommand.cs" />
     <Compile Include="IO\FileSaveCommand.cs" />
     <Compile Include="IO\FileOpenCommand.cs" />
