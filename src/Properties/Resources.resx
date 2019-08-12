@@ -292,9 +292,6 @@
 - #{number}，表示生成{number}个的数字字符，譬如：#4
 - ?{number}，表示生成{number}个的含有字母或数字的字符，譬如：?8</value>
   </data>
-  <data name="Text.SecretGenerateCommand.Options.Timeout" xml:space="preserve">
-    <value>表示验证码的缓存时长，支持“s(秒)”、“m(分钟)”、“h(小时)”和“d(天)”这几种单位，譬如：15m(15分钟)、24h(24小时)、7d(7天)。</value>
-  </data>
   <data name="Text.SecretGenerateCommand.Title" xml:space="preserve">
     <value>生成秘密（验证码）命令</value>
   </data>
