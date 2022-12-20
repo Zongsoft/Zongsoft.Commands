@@ -5,5 +5,7 @@
 README: [English](https://github.com/Zongsoft/Zongsoft.Commands/blob/master/README.md) | [简体中文](https://github.com/Zongsoft/Zongsoft.Commands/blob/master/README-zh_CN.md)
 
 -----
+注：该项目已归档，对应的替代版本请参考：https://github.com/Zongsoft/Framework/blob/master/Zongsoft.Commands
+-----
 
 提供了常用的命令集。
